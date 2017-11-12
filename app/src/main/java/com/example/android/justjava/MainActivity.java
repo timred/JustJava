@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void increment(View view) {
         quantity = quantity + 1;
-        display(quantity);
+        displayQuantity(quantity);
     }
 
     /**
@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void decrement(View view) {
         quantity = quantity - 1;
-        display(quantity);
+        displayQuantity(quantity);
     }
 
     /**
@@ -47,10 +47,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
+     * Calculates the price of the order based on the current quantity.
+     *
+     * @return the price
+     */
+    private int calculatePrice(int quantity) {
+        int price = quantity * 5;
+        return price;
+    }
+
+    /**
      * This method displays the given price on the screen.
      */
     private void displayPrice(int number) {
-        TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
+        TextView priceTextView = findViewById(R.id.price_text_view);
         priceTextView.setText(NumberFormat.getCurrencyInstance(Locale.UK).format(number));
     }
 
@@ -58,15 +68,15 @@ public class MainActivity extends AppCompatActivity {
      * This method displays the given text on the screen.
      */
     private void displayMessage(String message) {
-        TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
+        TextView priceTextView = findViewById(R.id.price_text_view);
         priceTextView.setText(message);
     }
 
     /**
      * This method displays the given quantity value on the screen.
      */
-    private void display(int number) {
-        TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
+    private void displayQuantity(int number) {
+        TextView quantityTextView = findViewById(R.id.quantity_text_view);
         quantityTextView.setText("" + number);
     }
 }
