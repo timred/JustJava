@@ -40,43 +40,48 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
-        int price = quantity * 5;
-        String message = "Total: £" + price;
-        message = message + "\nThank you!";
+        int price = calculatePrice();
+        String message = createOrderSummary(price);
         displayMessage(message);
     }
 
     /**
-     * Calculates the price of the order based on the current quantity.
+     * Calculates the price of the order.
      *
-     * @return the price
+     * @return total price
      */
-    private int calculatePrice(int quantity) {
+    private int calculatePrice() {
         int price = quantity * 5;
         return price;
     }
 
     /**
-     * This method displays the given price on the screen.
+     * Creates the order summary.
+     *
+     * @param price of the order
+     * @return message information
      */
-    private void displayPrice(int number) {
-        TextView priceTextView = findViewById(R.id.price_text_view);
-        priceTextView.setText(NumberFormat.getCurrencyInstance(Locale.UK).format(number));
+    private String createOrderSummary(int price) {
+        String message = "Name: Tim Reddish\n";
+        message += "Quantity: " + quantity;
+        message += "\nTotal: £" + price;
+        message += "\nThank you!";
+        return message;
     }
 
     /**
      * This method displays the given text on the screen.
      */
     private void displayMessage(String message) {
-        TextView priceTextView = findViewById(R.id.price_text_view);
-        priceTextView.setText(message);
+        TextView orderSummaryTextView = findViewById(R.id.order_summary_text_view);
+        orderSummaryTextView.setText(message);
     }
 
     /**
      * This method displays the given quantity value on the screen.
      */
-    private void displayQuantity(int number) {
+    private void displayQuantity(int num) {
         TextView quantityTextView = findViewById(R.id.quantity_text_view);
-        quantityTextView.setText("" + number);
+        quantityTextView.setText("" + num);
     }
 }
