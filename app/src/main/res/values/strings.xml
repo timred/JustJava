@@ -1,3 +1,43 @@
-<resources>
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- Title for the Application -->
     <string name="app_name">Just Java</string>
+
+    <!-- Name hint before the user enter's their name -->
+    <string name="name_hint">Name</string>
+
+    <!-- The Toppings Header -->
+    <string name="toppings">Toppings</string>
+
+    <!-- The actual toppings -->
+    <string name="topping_whipped_cream">Whipped cream</string>
+    <string name="topping_chocolate">Chocolate</string>
+
+    <!-- The Quantity Header -->
+    <string name="quantity">Quantity</string>
+
+    <!-- Initial Quantity Value -->
+    <string name="initial_quantity_value">2</string>
+
+    <!-- Order Button Text -->
+    <string name="order">Order</string>
+
+    <!-- Toast for Too Many or not enough coffees bought -->
+    <string name="tooHigh">You cannot have more than 100 coffees</string>
+    <string name="tooLow">You cannot have less than 1 coffee</string>
+
+    <!-- Toast for no Name entered -->
+    <string name="noName">Please enter your name.</string>
+
+    <!-- Order Summary Email Subject -->
+    <string name="order_summary_email_subject">Just Java Order for <xliff:g exmaple="Amy" id="name">%s</xliff:g></string>
+
+    <!-- Order Summary Email Message -->
+    <string name="name">Name: <xliff:g example="Amy" id="name">%s</xliff:g></string>
+    <string name="add_whipped_cream">Add whipped cream?  <xliff:g example="true" id="addWhippedCream">%b</xliff:g></string>
+    <string name="add_chocolate">Add chocolate?  <xliff:g example="true" id="addChocolate">%b</xliff:g></string>
+    <string name="order_quantity">Quantity: <xliff:g example="2" id="quantity">%d</xliff:g></string>
+    <string name="order_total">Total: <xliff:g example="10" id="price">%s</xliff:g></string>
+    <string name="thank_you">Thank you!</string>
+
 </resources>

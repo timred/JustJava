@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
             displayQuantity(quantity);
             return;
         }
-        Toast tooHigh = Toast.makeText(getApplicationContext(), "You cannot have more than 100 coffees", Toast.LENGTH_SHORT);
+        Toast tooHigh = Toast.makeText(getApplicationContext(), getString(R.string.tooHigh), Toast.LENGTH_SHORT);
         tooHigh.show();
     }
 
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
             displayQuantity(quantity);
             return;
         }
-        Toast tooLow = Toast.makeText(getApplicationContext(), "You cannot have less than 1 coffee", Toast.LENGTH_SHORT);
+        Toast tooLow = Toast.makeText(getApplicationContext(), getString(R.string.tooLow), Toast.LENGTH_SHORT);
         tooLow.show();
     }
 
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         String userNameText = userName.getText().toString();
 
         if (userNameText.length() == 0) {
-            Toast userToast = Toast.makeText(getApplicationContext(), "Please enter your name.", Toast.LENGTH_SHORT);
+            Toast userToast = Toast.makeText(getApplicationContext(), getString(R.string.noName), Toast.LENGTH_SHORT);
             userToast.show();
             return;
         }
@@ -82,8 +82,7 @@ public class MainActivity extends AppCompatActivity {
         // Email the Order
         Intent intent = new Intent(Intent.ACTION_SENDTO);
         intent.setData(Uri.parse("mailto:")); // only email apps should handle this
-        //intent.putExtra(Intent.EXTRA_EMAIL, "xynomix@gmail.com");
-        intent.putExtra(Intent.EXTRA_SUBJECT, "JustJava Order for" + userNameText);
+        intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.order_summary_email_subject, userNameText));
         intent.putExtra(Intent.EXTRA_TEXT, message);
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
@@ -127,12 +126,13 @@ public class MainActivity extends AppCompatActivity {
      * @return message information
      */
     private String createOrderSummary(String user, int price, boolean addWhippedCream, boolean addChocolate) {
-        String message = "Name: " + user;
-        message += "\nAdd whipped cream? " + addWhippedCream;
-        message += "\nAdd chocolate? " + addChocolate;
-        message += "\nQuantity: " + quantity;
-        message += "\nTotal: £" + price;
-        message += "\nThank you!";
+        String message = getString(R.string.name, user);
+        message += "\n" + getString(R.string.add_whipped_cream, addWhippedCream);
+        message += "\n" + getString(R.string.add_chocolate, addChocolate);
+        message += "\n" + getString(R.string.order_quantity, quantity);
+        message += "\n" + getString(R.string.order_total,
+                NumberFormat.getCurrencyInstance().format(price));
+        message += "\n" + getString(R.string.thank_you);
         return message;
     }
 
